@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Threading;
+using System.Runtime.CompilerServices;
+
+namespace microchelik2
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            try
+            {
+                Chelovek menchick = new Chelovek();
+                
+                (int x, int y, int r) head = (0, 0, 0);
+                (int x, int y, int height, int lenght) body = (0, 0, 0, 0);
+                (int l, int angele) hands = (0, 0);
+                (int l, int angele) legs = (0, 0);
+
+                Console.WriteLine("Введите данные головы");
+                Console.WriteLine($"Корординаты центра головы (x)");
+                head.x = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"Корординаты центра головы (y)");
+                head.y = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"Радиус");
+                head.r = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+
+                Console.WriteLine("Введите данные туловища");
+                Console.WriteLine($"Корординаты верхнего левого угла (x)");
+                body.x = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"Корординаты верхнего левого угла (y)");
+                body.y = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"Высота туловища");
+                body.height = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"Ширина туловища");
+                body.lenght = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+
+                Console.WriteLine("Введите данные рук");
+                Console.WriteLine($"Длина рук");
+                hands.l = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"Угол положения");
+                hands.angele = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+
+                Console.WriteLine("Введите данные ног");
+                Console.WriteLine($"Длина ног");
+                legs.l = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"Угол положения");
+                legs.angele = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine();
+
+                Console.WriteLine("Расчитать рост? (Да/Нет)");
+                if (Console.ReadLine() == "Да")
+                {
+                    Console.WriteLine($"Ваш рост = {head.r * 2 + body.height + legs.l}");
+                }
+                else /*if (Console.ReadLine() == "Нет")*/
+                {
+                    Console.WriteLine("Ну ладна");
+                    Thread.Sleep(2000);
+                    Console.WriteLine("Иди гуляй!!!");
+                    Environment.Exit(0);
+                }
+                
+                //else 
+                //{
+                //    while (Console.ReadLine() != "Да" || Console.ReadLine() != "Нет")
+                //    {
+                //        Console.WriteLine("Повторяю");
+                //    }
+                //}
+            }
+            catch
+            {
+                Console.WriteLine("эм чел лол кринж");
+            }
+
+            Console.ReadKey();
+
+        }
+    }
+}
+internal class Chelovek
+{
+    public (int x, int y, int r) Head { get; set; }
+    public (int x, int y, int height, int lenght) Body { get; set; }
+    public (int l, int angele) Hands { get; set; }
+    public (int l, int angele) Legs { get; set; }
+}
